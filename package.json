@@ -1,33 +1,36 @@
 {
-  "name": "clock-logic",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/index.ts",
-    "lint": "eslint . --ext .ts --max-warnings=0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xiavn/clock-logic.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xiavn/clock-logic/issues"
-  },
-  "homepage": "https://github.com/xiavn/clock-logic#readme",
-  "dependencies": {
-    "discord.js": "^14.9.0"
-  },
-  "devDependencies": {
-    "@types/node": "^18.16.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
-    "eslint": "^8.39.0",
-    "prettier": "2.8.8",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
-  }
+    "name": "clock-logic",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "start": "ts-node src/index.ts",
+        "lint": "eslint . --ext .ts --max-warnings=0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xiavn/clock-logic.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/xiavn/clock-logic/issues"
+    },
+    "homepage": "https://github.com/xiavn/clock-logic#readme",
+    "dependencies": {
+        "discord.js": "^14.9.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.5.1",
+        "@types/node": "^18.16.0",
+        "@typescript-eslint/eslint-plugin": "^5.59.1",
+        "@typescript-eslint/parser": "^5.59.1",
+        "eslint": "^8.39.0",
+        "jest": "^29.5.0",
+        "prettier": "2.8.8",
+        "ts-jest": "^29.1.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4"
+    }
 }
