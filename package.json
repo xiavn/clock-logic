@@ -1,0 +1,28 @@
+{
+  "name": "clock-logic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiavn/clock-logic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiavn/clock-logic/issues"
+  },
+  "homepage": "https://github.com/xiavn/clock-logic#readme",
+  "dependencies": {
+    "discord.js": "^14.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0",
+    "prettier": "2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
