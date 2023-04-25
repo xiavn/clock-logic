@@ -1,14 +1,47 @@
-import setupRules from "./setup-rules";
+import setupRules, { playerCount } from "./setup-rules";
+
+const playerCounts: playerCount[] = [7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+type playerCountTable = { pc: playerCount; e: number }[];
+
+const outsiderPlayerCounts: playerCountTable = playerCounts.map((num, i) => ({
+    pc: num,
+    e: i % 3,
+}));
+
+const minionPlayerCounts: playerCountTable = playerCounts.map((num, i) => ({
+    pc: num,
+    e: Math.floor(i / 3) + 1,
+}));
+
+const townsfolkPlayerCounts: playerCountTable = playerCounts.map((num, i) => ({
+    pc: num,
+    e: Math.floor(i / 3) + 5,
+}));
 
 describe("setupRules", () => {
-    describe();
-    it("should return 0 when playerCount is 7, 10 or 13.", () => {
-        expect(setupRules.outsiders(7)).toBe(0);
-        expect(setupRules.outsiders(10)).toBe(0);
-        expect(setupRules.outsiders(13)).toBe(0);
+    describe("outsiders", () => {
+        it.each(outsiderPlayerCounts)(
+            "should return $e when playerCount is $pc.",
+            ({ pc, e }) => {
+                expect(setupRules.outsiders(pc)).toBe(e);
+            }
+        );
     });
-    "minions takes playerCount and returns minion number",
-        () => {
-            expect(setupRules.outsiders(7)).toBe(0);
-        };
+    describe("minions", () => {
+        it.each(minionPlayerCounts)(
+            "should return $e when playerCount is $pc.",
+            ({ pc, e }) => {
+                expect(setupRules.minions(pc)).toBe(e);
+            }
+        );
+    });
+    describe("townsfolk", () => {
+        it.each(townsfolkPlayerCounts)(
+            "should return $e when playerCount is $pc",
+            ({ pc, e }) => {
+                expect(setupRules.townsfolk(pc)).toBe(e);
+            }
+        );
+    });
 });
