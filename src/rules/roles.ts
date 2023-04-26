@@ -1,15 +1,11 @@
+import { actionType, edition, team } from "./rule-types";
+
 interface Role {
     id: string;
     name: string;
-    edition: "tb";
-    team: "townsfolk" | "outsider" | "minion" | "demon";
-    actionType:
-        | "startKnowing"
-        | "eachNight"
-        | "eachNight*"
-        | "passive"
-        | "oncePerGame"
-        | "onDeath";
+    edition: edition;
+    team: team;
+    actionType: actionType;
 }
 
 interface Roles {
