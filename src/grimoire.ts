@@ -1,6 +1,7 @@
 import { edition } from "./rules/rule-types";
 import setupRules, { playerCount } from "./rules/setup-rules";
 
+type townsquareType = { [key: string]: { name: string; role?: string } };
 export interface Grimoire {
     playerCount: playerCount;
     outsiders: number;
@@ -9,7 +10,8 @@ export interface Grimoire {
     townsfolk: number;
     bluffs: string[];
     edition: edition;
-    townsquare: { name: string; role?: string }[];
+    townsquare: townsquareType;
+    seatingOrder: string[];
 }
 
 const testData = [
@@ -77,6 +79,23 @@ const testData = [
 
 export const generateStartingGrimoire = (): Grimoire => {
     const playerCount: playerCount = 15;
+    const { townsquare, seatingOrder } = testData.reduce(
+        (acc, { name }) => {
+            return {
+                townsquare: {
+                    ...acc.townsquare,
+                    [name]: {
+                        name,
+                    },
+                },
+                seatingOrder: acc.seatingOrder.concat(name),
+            };
+        },
+        {
+            townsquare: {},
+            seatingOrder: [],
+        } as { townsquare: townsquareType; seatingOrder: string[] }
+    );
     return {
         playerCount,
         outsiders: setupRules.outsiders(playerCount),
@@ -85,12 +104,28 @@ export const generateStartingGrimoire = (): Grimoire => {
         townsfolk: setupRules.townsfolk(playerCount),
         edition: "tb",
         bluffs: [],
-        townsquare: testData.map((player) => ({ name: player.name })),
+        townsquare,
+        seatingOrder,
     };
 };
 
 export const generateFullGrimoire = (): Grimoire => {
     const playerCount: playerCount = 15;
+    const { townsquare, seatingOrder } = testData.reduce(
+        (acc, curr) => {
+            return {
+                townsquare: {
+                    ...acc.townsquare,
+                    [curr.name]: curr,
+                },
+                seatingOrder: acc.seatingOrder.concat(curr.name),
+            };
+        },
+        {
+            townsquare: {},
+            seatingOrder: [],
+        } as { townsquare: townsquareType; seatingOrder: string[] }
+    );
     return {
         playerCount,
         outsiders: setupRules.outsiders(playerCount),
@@ -99,6 +134,7 @@ export const generateFullGrimoire = (): Grimoire => {
         townsfolk: setupRules.townsfolk(playerCount),
         bluffs: ["investigator", "soldier", "butler"],
         edition: "tb",
-        townsquare: testData,
+        townsquare,
+        seatingOrder,
     };
 };

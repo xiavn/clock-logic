@@ -169,4 +169,6 @@ const roles: Roles = {
     },
 };
 
+export const getRoleName = (role: string) => roles[role].name || "Unknown";
+
 export default roles;
