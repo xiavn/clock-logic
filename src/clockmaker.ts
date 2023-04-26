@@ -9,6 +9,14 @@ const processClue = (
     if (clue.information.bluffs) {
         workingGrimoire.bluffs = clue.information.bluffs;
     }
+    if (clue.information.playerIsRole) {
+        const playerIsRole = clue.information.playerIsRole;
+        playerIsRole.forEach((player) =>
+            workingGrimoire.townsquare[
+                player.player
+            ].known?.possibleRoles.concat(player.possibleRoles)
+        );
+    }
     return workingGrimoire;
 };
 

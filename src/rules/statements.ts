@@ -1,12 +1,20 @@
-import { getRoleName } from "./roles";
-import { actionType } from "./rule-types";
+import { getRoleName, getRolesByType, rolesByEdition } from "./roles";
+import { actionType, edition } from "./rule-types";
 
-const statements = {
+const statements = (scriptEdition: edition) => ({
     actionType: (player: string, typeOfAction: actionType) => ({
         id: "actionType",
         text: `${player} is a ${typeOfAction} role.`,
         information: {
-            playerIsRole: { player, actionType: [typeOfAction] },
+            playerIsRole: [
+                {
+                    player,
+                    possibleRoles: getRolesByType(
+                        typeOfAction,
+                        rolesByEdition[scriptEdition]
+                    ),
+                },
+            ],
         },
     }),
     demonBluffs: (bluffRoles: [string, string, string]) => ({
@@ -21,6 +29,6 @@ const statements = {
     actionInfo: {
         id: "actionInfo",
     },
-};
+});
 
 export default statements;

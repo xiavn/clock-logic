@@ -169,6 +169,19 @@ const roles: Roles = {
     },
 };
 
+const getRolesByEdition = (edition: edition) =>
+    Object.fromEntries(
+        Object.entries(roles).filter(([_, role]) => role.edition === edition)
+    );
+
+export const rolesByEdition = { tb: getRolesByEdition("tb") };
+export const getRolesByType = (type: actionType, editionRoles: Roles) =>
+    Object.fromEntries(
+        Object.entries(editionRoles).filter(
+            ([_, role]) => role.actionType === type
+        )
+    );
+
 export const getRoleName = (role: string) => roles[role].name || "Unknown";
 
 export default roles;

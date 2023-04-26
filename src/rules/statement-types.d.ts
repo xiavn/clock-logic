@@ -2,7 +2,7 @@ import { actionType } from "./rule-types";
 
 type playerIsRoleInformation = {
     player: string;
-    actionType: actionType[];
+    possibleRoles: string[];
 };
 
 type informationTypes = playerIsRoleInformation;
@@ -11,7 +11,7 @@ interface StatementResult {
     id: string;
     text: string;
     information: {
-        playerIsRole?: playerIsRoleInformation;
+        playerIsRole?: playerIsRoleInformation[];
         bluffs?: [string, string, string];
     };
 }

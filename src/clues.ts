@@ -1,8 +1,9 @@
 import statements from "./rules/statements";
 
 export const generateClues = () => {
+    const tbStatements = statements("tb");
     return [
-        statements.actionType("Jamie", "startKnowing"),
-        statements.demonBluffs(["investigator", "soldier", "butler"]),
+        tbStatements.actionType("Jamie", "startKnowing"),
+        tbStatements.demonBluffs(["investigator", "soldier", "butler"]),
     ];
 };

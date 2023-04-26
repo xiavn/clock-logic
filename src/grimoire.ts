@@ -1,7 +1,16 @@
 import { edition } from "./rules/rule-types";
 import setupRules, { playerCount } from "./rules/setup-rules";
 
-type townsquareType = { [key: string]: { name: string; role?: string } };
+interface TownsquarePlayer {
+    name: string;
+    role?: string;
+    known?: {
+        possibleRoles: string[];
+        notRoles: string[];
+    };
+}
+
+type townsquareType = { [key: string]: TownsquarePlayer };
 export interface Grimoire {
     playerCount: playerCount;
     outsiders: number;
