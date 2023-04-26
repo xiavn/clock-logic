@@ -1,13 +1,12 @@
-import { actionType } from "./rule-types";
-
 type playerIsRoleInformation = {
     player: string;
     possibleRoles: string[];
+    notRoles: string[];
 };
 
 type informationTypes = playerIsRoleInformation;
 
-interface StatementResult {
+export interface StatementResult {
     id: string;
     text: string;
     information: {

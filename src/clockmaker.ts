@@ -11,11 +11,22 @@ const processClue = (
     }
     if (clue.information.playerIsRole) {
         const playerIsRole = clue.information.playerIsRole;
-        playerIsRole.forEach((player) =>
-            workingGrimoire.townsquare[
-                player.player
-            ].known?.possibleRoles.concat(player.possibleRoles)
-        );
+        playerIsRole.forEach((player) => {
+            const grimoirePlayer = workingGrimoire.townsquare[player.player];
+            if (!grimoirePlayer.known) {
+                grimoirePlayer.known = {
+                    possibleRoles: [],
+                    notRoles: [],
+                };
+            }
+            grimoirePlayer.known.possibleRoles =
+                grimoirePlayer.known.possibleRoles.concat(
+                    player.possibleRoles
+                ) || player.possibleRoles;
+            grimoirePlayer.known.notRoles =
+                grimoirePlayer.known.possibleRoles.concat(player.notRoles) ||
+                player.notRoles;
+        });
     }
     return workingGrimoire;
 };
@@ -27,5 +38,6 @@ export const solveGame = (
     const workingGrimoire = clues.reduce((acc, curr) => {
         return processClue(curr, acc);
     }, openingGrimoire);
+    console.log(workingGrimoire.townsquare);
     return workingGrimoire;
 };

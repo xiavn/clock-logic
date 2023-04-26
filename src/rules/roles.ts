@@ -46,7 +46,7 @@ const roles: Roles = {
         name: "Empath",
         edition: "tb",
         team: "townsfolk",
-        actionType: "startKnowing",
+        actionType: "eachNight",
     },
     fortuneTeller: {
         id: "fortuneteller",
@@ -175,12 +175,15 @@ const getRolesByEdition = (edition: edition) =>
     );
 
 export const rolesByEdition = { tb: getRolesByEdition("tb") };
-export const getRolesByType = (type: actionType, editionRoles: Roles) =>
-    Object.fromEntries(
-        Object.entries(editionRoles).filter(
-            ([_, role]) => role.actionType === type
-        )
-    );
+export const getRolesByType =
+    (filteredRoles: Roles) =>
+    (type: actionType, reverse = false) =>
+        Object.entries(filteredRoles)
+            .filter(([_, role]) => {
+                const matches = role.actionType === type;
+                return reverse ? !matches : matches;
+            })
+            .map(([id]) => id);
 
 export const getRoleName = (role: string) => roles[role].name || "Unknown";
 
