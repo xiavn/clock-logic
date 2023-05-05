@@ -32,13 +32,13 @@ export const firstNightKnowTwo =
             id: "firstNightKnowTwo",
             text: `${player} is a ${pickOne(
                 prettyPrint.actionType.startKnowing
-            )} who has ${know1} & ${know2} as pings`,
+            )} role who has ${know1} & ${know2} as pings`,
             information: {
                 playerIsRole: [
                     {
                         player,
-                        possibleRoles,
-                        notRoles,
+                        possibleRoles: possibleRoles.sort(),
+                        notRoles: notRoles.sort(),
                     },
                 ],
             },

@@ -59,7 +59,7 @@ const roles: Roles = {
         actionType: "eachNight",
         infoType: ["receivesANumber", "findsEvil", "findsGood"],
     },
-    fortuneTeller: {
+    fortuneteller: {
         id: "fortuneteller",
         name: "Fortune Teller",
         edition: "tb",
@@ -195,7 +195,8 @@ export const getRolesByType =
                 const matches = role.actionType === type;
                 return reverse ? !matches : matches;
             })
-            .map(([id]) => id);
+            .map(([id]) => id)
+            .sort();
 
 export const getRoleName = (role: string) => roles[role].name || "Unknown";
 

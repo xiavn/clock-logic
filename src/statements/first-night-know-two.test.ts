@@ -5,25 +5,43 @@ const editionRoles = rolesByEdition.tb;
 
 // const players = ["Ben", "Dave", "Leah", "Kali", "Eevee"];
 
-const expectedFirstNightRoles = ["washerwoman", "investigator", "librarian"];
+const expectedFirstNightRoles = [
+    "washerwoman",
+    "investigator",
+    "librarian",
+].sort();
 
-const otherRoles = Object.entries(rolesByEdition)
+const otherRoles = Object.entries(editionRoles)
     .filter(([role]) => !expectedFirstNightRoles.includes(role))
-    .map(([role]) => role);
+    .map(([role]) => role)
+    .sort();
 
 describe("first night know two statements", () => {
     describe("first night know two", () => {
-        it("takes a player and two additional players and returns their possible roles", () => {
-            expect(
-                firstNightKnowTwo(editionRoles)("Ben", "Leah", "Kali")
-                    .information
-            ).toBe({
-                playerIsRole: {
+        it("returns the possible roles for the player", () => {
+            const actual = firstNightKnowTwo(editionRoles)(
+                "Ben",
+                "Leah",
+                "Kali"
+            ).information;
+            expect(actual.playerIsRole).toEqual([
+                {
                     player: "Ben",
                     possibleRoles: expectedFirstNightRoles,
                     notRoles: otherRoles,
                 },
-            });
+            ]);
+        });
+        it("returns a description using the player and known roles", () => {
+            const actual = firstNightKnowTwo(editionRoles)(
+                "Ben",
+                "Leah",
+                "Kali"
+            ).text;
+            expect([
+                "Ben is a starts knowing role who has Leah & Kali as pings",
+                "Ben is a first night role who has Leah & Kali as pings",
+            ]).toContain(actual);
         });
     });
 });
