@@ -1,4 +1,4 @@
-import { pickOne } from "./utils";
+import { pickOne } from "../formatting/utils";
 
 describe("utils", () => {
     describe("pickOne", () => {
