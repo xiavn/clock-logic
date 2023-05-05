@@ -1,5 +1,5 @@
 import { Grimoire } from "./grimoire";
-import { StatementResult } from "./rules/statement-types";
+import { StatementResult } from "./statements/statement-types";
 
 const processClue = (
     clue: StatementResult,

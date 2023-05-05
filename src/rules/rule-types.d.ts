@@ -7,3 +7,16 @@ export type actionType =
     | "passive"
     | "oncePerGame"
     | "onDeath";
+export type infoType =
+    | "twoPlayersOneRole"
+    | "onePlayerOneRole"
+    | "toldTwoPlayers"
+    | "receivesANumber"
+    | "evilPairs"
+    | "findsGood"
+    | "findsEvil"
+    | "findsMinions"
+    | "findsDemons"
+    | "findsOutsiders"
+    | "findsTownsfolk"
+    | "pickTwo";

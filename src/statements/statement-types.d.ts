@@ -1,7 +1,8 @@
 type playerIsRoleInformation = {
     player: string;
-    possibleRoles: string[];
-    notRoles: string[];
+    possibleRoles?: string[];
+    notRoles?: string[];
+    exactRole?: string;
 };
 
 type informationTypes = playerIsRoleInformation;

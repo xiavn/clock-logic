@@ -1,4 +1,4 @@
-import { actionType, edition, team } from "./rule-types";
+import { actionType, edition, infoType, team } from "./rule-types";
 
 interface Role {
     id: string;
@@ -6,9 +6,10 @@ interface Role {
     edition: edition;
     team: team;
     actionType: actionType;
+    infoType?: infoType[];
 }
 
-interface Roles {
+export interface Roles {
     [key: string]: Role;
 }
 
@@ -19,6 +20,7 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "startKnowing",
+        infoType: ["twoPlayersOneRole", "toldTwoPlayers", "findsTownsfolk"],
     },
     librarian: {
         id: "librarian",
@@ -26,6 +28,12 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "startKnowing",
+        infoType: [
+            "twoPlayersOneRole",
+            "toldTwoPlayers",
+            "receivesANumber",
+            "findsOutsiders",
+        ],
     },
     investigator: {
         id: "investigator",
@@ -33,6 +41,7 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "startKnowing",
+        infoType: ["twoPlayersOneRole", "toldTwoPlayers", "findsMinions"],
     },
     chef: {
         id: "chef",
@@ -40,6 +49,7 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "startKnowing",
+        infoType: ["receivesANumber", "evilPairs", "findsEvil"],
     },
     empath: {
         id: "empath",
@@ -47,6 +57,7 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "eachNight",
+        infoType: ["receivesANumber", "findsEvil", "findsGood"],
     },
     fortuneTeller: {
         id: "fortuneteller",
@@ -54,6 +65,7 @@ const roles: Roles = {
         edition: "tb",
         team: "townsfolk",
         actionType: "eachNight",
+        infoType: ["findsDemons", "pickTwo"],
     },
     undertaker: {
         id: "undertaker",
