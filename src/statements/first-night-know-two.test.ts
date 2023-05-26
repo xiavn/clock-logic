@@ -44,4 +44,8 @@ describe("first night know two statements", () => {
             ]).toContain(actual);
         });
     });
+
+    describe("first night know two with role", () => {
+        it("returns the possible roles for the players", () => {});
+    });
 });
